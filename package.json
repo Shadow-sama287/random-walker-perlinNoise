@@ -1,0 +1,24 @@
+{
+  "name": "random-walker-perlinnoise",
+  "version": "1.0.0",
+  "description": "A lightweight, reusable template for creating HTML5 Canvas animations and interactive graphics. This project provides utility functions and a boilerplate structure to kickstart your canvas projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shadow-sama287/html-canvas-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Shadow-sama287/html-canvas-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Shadow-sama287/html-canvas-boilerplate#readme",
+  "dependencies": {
+    "@chriscourses/perlin-noise": "^1.0.6"
+  }
+}

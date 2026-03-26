@@ -1,3 +1,4 @@
+import { noise } from '../node_modules/@chriscourses/perlin-noise/index.js'
 // import { randomIntFromRange, randomColor, distance } from './utils/utils.js';
 // import { color3 } from './utils/colorArrays.js';
 
@@ -25,12 +26,12 @@ addEventListener('mousemove', (event) => {
 })
 
 class Circle {
-    constructor(x, y, radius, color) {
+    constructor(x, y, radius, color, offset) {
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.color = color;
-
+        this.offset = offset;
 
         this.draw = () => {
             c.beginPath();
@@ -41,20 +42,36 @@ class Circle {
         }
 
         this.update = () => {
-            //Start here
+            // this.y += 
 
             this.draw();
         }
     }
 }
 
+let circles;
 function init() {
-    //idk but maybe i think we put the created objects and shapes
+    circles = [];
+
+    for (let i = 0; i < 100; i++) {
+        circles.push(new Circle(canvas.width / 2, canvas.height / 2, 5, 'blue', i * 0.01));
+    }
 }
 
+let time = 0;
 function animate() {
     requestAnimationFrame(animate);
-    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.fillStyle = 'rgba(255,255,255,0.3)'
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
+
+    circles.forEach(circle => {
+        circle.update();
+        circle.x = noise(time + circle.offset + 20) * canvas.width;
+        circle.y = noise(time + circle.offset) * canvas.height;
+    });
+
+    time += 0.005;
 
     c.fillText('dattebayo', mouse.x, mouse.y)
     //call the object.update() method
