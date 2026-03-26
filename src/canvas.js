@@ -1,9 +1,18 @@
 import { noise } from '../node_modules/@chriscourses/perlin-noise/index.js'
+import { Pane } from '../node_modules/tweakpane/dist/tweakpane.js';
 // import { randomIntFromRange, randomColor, distance } from './utils/utils.js';
 // import { color3 } from './utils/colorArrays.js';
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
+
+const pane = new Pane();
+
+const params = {
+    isErasable: true,
+}
+
+pane.addBinding(params, 'isErasable');
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
@@ -62,7 +71,9 @@ let time = 0;
 function animate() {
     requestAnimationFrame(animate);
     c.fillStyle = 'rgba(255,255,255,0.3)'
-    c.fillRect(0, 0, canvas.width, canvas.height);
+    if (params.isErasable) {
+        c.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
 
     circles.forEach(circle => {
