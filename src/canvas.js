@@ -54,7 +54,7 @@ function init() {
     circles = [];
 
     for (let i = 0; i < 100; i++) {
-        circles.push(new Circle(canvas.width / 2, canvas.height / 2, 5, 'blue', i * 0.01));
+        circles.push(new Circle(canvas.width / 2, canvas.height / 2, 5, `hsl(${Math.random() * 60 + 180}, 100%, 50%)`, i * 0.01));
     }
 }
 
